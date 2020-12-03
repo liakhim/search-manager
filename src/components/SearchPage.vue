@@ -2,6 +2,7 @@
   <div class="hello">
     <div class="search-wrapper">
       <input type="text" v-model="search" placeholder="Search title.."/>
+      <button @click="search = ''" class="standard-button-danger">Clear</button>
       <label>Search title:</label>
     </div>
     <div class="wrapper">
