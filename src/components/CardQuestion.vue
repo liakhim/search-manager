@@ -1,6 +1,6 @@
 <template>
     <div class="card">
-    <b-button v-b-modal.modal-xl variant="transparent">
+    <b-button v-b-modal = idx variant="transparent">
         <div class="card__title">
             <div class="card__title--question">
                 <h3>{{question}}</h3>
@@ -10,7 +10,7 @@
             </div>
         </div>
     </b-button>
-        <b-modal id="modal-xl" size="xl" title="Extra Large Modal">
+        <b-modal :id="idx" size="xl" title="Extra Large Modal">
             {{answer}}
         </b-modal>
     </div>
@@ -18,7 +18,7 @@
 <script>
     export default {
         name: 'CardQuestion',
-        props: ['question', 'category', 'answer'],
+        props: ['question', 'category', 'answer','idx'],
         methods: {
             showModal() {
                 this.$refs['my-modal'].show()

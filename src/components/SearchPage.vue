@@ -1,48 +1,37 @@
 <template>
   <div class="container">
-    <div class="search-wrapper">
-      <input type="text" v-model="search" placeholder="Search title.."/>
-      <button @click="search = ''" class="standard-button-danger">Clear</button>
-      <label>Search title:</label>
-    </div>
     <b-container class="bv-example-row" style="margin-top: 100px">
       <b-row>
         <b-col>
-          <CardQuestion :question="'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'"
-                        :answer="'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, ducimus labore odio tempore voluptates?'"
-                        :category="'Category 1'"/>
-        </b-col>
-        <b-col>
-          <CardQuestion :question="'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'"
-                             :answer="'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, ducimus labore odio tempore voluptates?'"
-                             :category="'Category 1'"/></b-col>
-        <b-col>
-          <CardQuestion :question="'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'"
-                        :answer="'Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab, ducimus labore odio tempore voluptates?'"
-                        :category="'Category 1'"/>
+          <div class="search-wrapper">
+            <label>Search title:</label>
+            <input type="text" v-model="search" placeholder="Search title.."/>
+            <button @click="search = ''" class="standard-button-danger">Clear</button>
+          </div>
         </b-col>
       </b-row>
     </b-container>
-    <div class="wrapper">
-
-    </div>
+    <b-container class="bv-example-row" style="margin-top: 100px">
+      <b-row>
+        <b-col>
+          <CardQuestion v-for="(item, index) in filteredList" :key="index"
+                        :question="item.name"
+                        :answer="item.address.street"
+                        :category="item.phone"
+          :idx="'modal' + index"/>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
 </template>
 
 <script>
   import axios from 'axios'
   import CardQuestion from '../components/CardQuestion.vue'
-  // class Post {
-  //   constructor(title, link, author, img) {
-  //     this.title = title;
-  //     this.link = link;
-  //     this.author = author;
-  //     this.img = img;
-  //   }
-  // }
+
 export default {
   name: 'Search Manager',
-    components: {CardQuestion},
+  components: {CardQuestion},
   props: {
     msg: String
   },
